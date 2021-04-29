@@ -1,12 +1,11 @@
 package com.tokioschool.Cartas;
 
-import java.util.List;
-
 public abstract class AlgoritmoOrdenacion {
     /**
      * Ordena una lista de cartas pasada por parámetro
-     * @param listaCartas Lista de cartas que queda ordenada al final del algoritmo
+     * @param "listaCartas" Lista de cartas que queda ordenada al final del algoritmo
+     * @return
      */
-    public abstract void ordena(List listaCartas);
+    public abstract Mazo ordena(Mazo mazo);
 
 }

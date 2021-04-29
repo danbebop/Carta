@@ -1,23 +1,7 @@
 package com.tokioschool.Cartas;
-//Modifica la clase `Mazo` que hemos visto en el ejemplo de las cartas para que pueda ordenarse según distintos criterios y algoritmos de ordenación.
-//
-//        Para ello:
-//
-//        - Crea una clase abstracta AlgoritmoOrdenacion que incluya un método abstracto `ordenar(List listaCartas)` que devuelve la lista de cartas pasadas por parámetro ordenadas.
-//        - Crea subclases de `AlgorimoOrdenacion` que ordenan las cartas por diferentes criterios:
-//
-//        - Ordenación palo-número-incremental: Ordena las cartas primero por el palo (por orden alfabético de BASTOS, COPAS, ESPADAS, OROS) y luego por el número (de más pequeño a más grande).
-//
-//        - Ordenación palo-número-decremental: Ordena las cartas primero por el palo (por orden alfabético de BASTOS, COPAS, ESPADAS, OROS) y luego por el número (de más grande a más pequeño).
-//
-//        - Ordenación número-palo. Ordena a las cartas primero por número (incremental) y luego por palo (orden alfabético)
-//
-//        - Puedes buscar algoritmos de ordenación en: [https://](https://es.wikipedia.org/wiki/Algoritmo_de_ordenamiento)[es.wikipedia.org/wiki/Algoritmo_de_ordenamiento](https://es.wikipedia.org/wiki/Algoritmo_de_ordenamiento) y necesitarás especificar el criterio de ordenación de cartas.
-//        - Permite que se le pueda indicar el algoritmo de ordenación al mazo mediante un método setAlgoritmo
-//        - Ordena el mazo mediante el algoritmo de ordenación que le has indicado, el mazo no sabe realmente cómo se está ordenando
-//
-//
-//        En el main se muestra cómo se crea un mazo y se ordena de varias formas distintas.
+
+import java.util.ArrayList;
+import java.util.List;
 
 class Main {
     public static void main(String[] args) {
@@ -26,17 +10,87 @@ class Main {
         System.out.println(mazo.toString());
 
 
-
-        mazo.setAlgoritmo(new OrdPalNumInc() );
-        mazo.ordena();
+        mazo.setAlgoritmo(new OrdPalNumInc());
+        mazo.ordena(mazo);
         System.out.println(mazo.toString());
 
         mazo.setAlgoritmo(new OrdPalNumDec());
-        mazo.ordena();
+        mazo.ordena(mazo);
         System.out.println(mazo.toString());
 
         mazo.setAlgoritmo(new OrdNumIncPal());
-        mazo.ordena();
+        mazo.ordena(mazo);
         System.out.println(mazo.toString());
+
+
+        /*int palo;
+        int numero;
+        int contador = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int z = 0; z < 10; z++) {
+                for (int j = 0; j < mazo.numCartas(); j++) {
+                    Carta carta = mazo.getCarta(j);
+
+                    switch (carta.getPalo()) {
+                        case "BASTOS":
+                            palo = 0;
+                            break;
+                        case "COPAS":
+                            palo = 1;
+                            break;
+                        case "ESPADAS":
+                            palo = 2;
+                            break;
+                        case "OROS":
+                            palo = 3;
+                            break;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + carta.getPalo());
+                    }
+                    switch (carta.getNumero()) {
+                        case "AS":
+                            numero = 0;
+                            break;
+                        case "DOS":
+                            numero = 1;
+                            break;
+                        case "TRES":
+                            numero = 2;
+                            break;
+                        case "CUATRO":
+                            numero = 3;
+                            break;
+                        case "CINCO":
+                            numero = 4;
+                            break;
+                        case "SEIS":
+                            numero = 5;
+                            break;
+                        case "SIETE":
+                            numero = 6;
+                            break;
+                        case "SOTA":
+                            numero = 7;
+                            break;
+                        case "CABALLO":
+                            numero = 8;
+                            break;
+                        case "REY":
+                            numero = 9;
+                            break;
+                        default:
+                            throw new IllegalStateException("Unexpected value: " + carta.getNumero());
+                    }
+                    if (palo == i && numero == z) {
+                        mazo.extraerCarta(j);
+                        mazo.insertarCarta(contador,carta);
+                        contador++;
+                        break;
+                    }
+                }
+            }
+        }*/
+
+
     }
 }

@@ -13,8 +13,8 @@ public class Mazo {
         this.algoritmo=algoritmo;
     }
 
-    public void ordena() {
-        algoritmo.ordena(cartas);
+    public Mazo ordena(Mazo mazo) {
+        return algoritmo.ordena(mazo);
     }
 
     /**
